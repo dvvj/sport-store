@@ -5,14 +5,19 @@ faker.seed(100);
 
 for (let i = 0; i <= 503; i++) {
     let category = faker.helpers.randomize(categories);
-    products.push({
+    let prod = {
         id: i,
         name: faker.commerce.productName(),
         category,
         description: `${category}: ${faker.lorem.sentence(3)}`,
         price: Number(faker.commerce.price())
-    })
+    };
+    products.push(prod);
+    console.log(`${prod}`);
 }
+
+let tmpj = products.map(JSON.stringify).join("\n");
+console.log(tmpj);
 
 module.exports = function() {
     return {
